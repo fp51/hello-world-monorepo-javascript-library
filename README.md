@@ -11,8 +11,8 @@ This is a mono-repo of javascript libraries.
 
 It contains :
 
-- [`@iadvize-oss/hello-1`](./packages/hello-1)
-- [`@iadvize-oss/hello-2`](./packages/hello-2)
+- [`@fp51/hello-1`](./packages/hello-1)
+- [`@fp51/hello-2`](./packages/hello-2)
 
 ## How to develop 
 

@@ -1,5 +1,5 @@
 {
-  "name": "@iadvize-oss/hello-1-monorepo",
+  "name": "@fp51/hello-1-monorepo",
   "version": "0.1.6",
   "description": "Package 1 in hello world monorepo",
   "main": "dist/index.js",
@@ -16,18 +16,17 @@
     "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx,.json,.d.ts --cache",
     "docs": "typedoc"
   },
-  "homepage": "https://github.com/iadvize/hello-world-monorepo-javascript-library#readme",
+  "homepage": "https://github.com/fp51/hello-world-monorepo-javascript-library#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iadvize/hello-world-monorepo-javascript-library.git"
+    "url": "git+https://github.com/fp51/hello-world-monorepo-javascript-library.git"
   },
   "keywords": [
-    "iAdvize"
   ],
   "bugs": {
-    "url": "https://github.com/iadvize/hello-world-monorepo-javascript-library/issues"
+    "url": "https://github.com/fp51/hello-world-monorepo-javascript-library/issues"
   },
-  "author": "iAdvize developers",
+  "author": "fp51 developers",
   "license": "MIT",
   "private": false,
   "devDependencies": {

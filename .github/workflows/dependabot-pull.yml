@@ -1,32 +1,40 @@
-name: Dependabot pull additions
+name: Dependabot automation
 
 on:
   pull_request:
     types: [opened]
 
 jobs:
-  add-assignee:
-    name: 'add assignee'
+  build:
     runs-on: ubuntu-18.04
 
-    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+    name: 'Auto approve when needed'
 
     steps:
-    - name: Add assignee
-      uses: actions/github-script@v2
+    - name: 'Set fp51-bot as assignee'
+      uses: actions/github-script@v3
+      if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
       with:
-        github-token: ${{ secrets.TOKEN_REPO_WRITE }}
+        github-token: "${{ secrets.TOKEN_REPO_WRITE }}"
         script: |
           await github.issues.addAssignees({
             owner: context.repo.owner,
             repo: context.repo.repo,
             issue_number: context.payload.pull_request.number,
-            assignees: ['iadvizeponey']
+            assignees: ['fp51-bot']
           });
 
-          await github.pulls.createReview({
+    - name: 'Approve dependabot PRs'
+      uses: actions/github-script@v3
+      if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+      with:
+        github-token: "${{ secrets.TOKEN_REPO_WRITE }}"
+        script: |
+          github.pulls.createReview({
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: context.payload.pull_request.number,
             event: "APPROVE",
+            body: '![approve gif](https://media.giphy.com/media/8RxCFgu88jUbe/giphy.gif)',
           });
+
