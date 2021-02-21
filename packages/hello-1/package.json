@@ -1,6 +1,6 @@
 {
   "name": "@fp51/hello-1-monorepo",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Package 1 in hello world monorepo",
   "main": "dist/index.js",
   "module": "esm/index.js",
