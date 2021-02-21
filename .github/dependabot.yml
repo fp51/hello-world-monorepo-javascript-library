@@ -12,15 +12,15 @@ updates:
       - "Action: no bump"
       - "Action: keep-rebased-then-merge" # only auto-merge dev dependencies
 
-  # - package-ecosystem: "npm"
-  #   directory: "/packages/hello-1"
-  #   allow:
-  #     - dependency-type: "production"
-  #   schedule:
-  #     interval: "daily"
-  #     time: "02:00"
-  #   labels:
-  #     - "Action: no bump"
+  - package-ecosystem: "npm"
+    directory: "/packages/hello-1"
+    allow:
+      - dependency-type: "production"
+    schedule:
+      interval: "daily"
+      time: "02:00"
+    labels:
+      - "Action: no bump"
 
   - package-ecosystem: "npm"
     directory: "/packages/hello-2"
