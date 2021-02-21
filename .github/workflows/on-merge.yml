@@ -2,7 +2,7 @@ name: On merge
 
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
     types: [closed]
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
 
     - uses: actions/checkout@v2
       with:
-        ref: master
+        ref: main
         token: ${{ secrets.TOKEN_REPO_WRITE }}
 
     - name: Git config
@@ -59,7 +59,7 @@ jobs:
 
           git push origin gh-pages
 
-          git checkout -f master
+          git checkout -f main
         fi
 
     - uses: actions/setup-node@v1
@@ -172,7 +172,7 @@ jobs:
 
     - uses: actions/checkout@v2
       with:
-        ref: master
+        ref: main
         token: ${{ secrets.TOKEN_REPO_WRITE }}
 
     - name: Git config
@@ -219,7 +219,7 @@ jobs:
 
         npm --no-git-tag-version version prerelease --preid=beta
 
-    - name: Push on master
+    - name: Push on main
       id: push
       env:
         PACKAGE: ${{ steps.extract-labels.outputs.package }}
