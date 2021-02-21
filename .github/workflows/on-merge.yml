@@ -64,7 +64,7 @@ jobs:
 
     - uses: actions/setup-node@v1
       with:
-        node-verion: '12.x'
+        node-version: '14'
 
     - name: Install
       env:
@@ -182,7 +182,7 @@ jobs:
 
     - uses: actions/setup-node@v1
       with:
-        node-verion: '12.x'
+        node-version: '14'
 
     - name: Install
       env:
