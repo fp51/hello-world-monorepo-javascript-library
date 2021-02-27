@@ -14,8 +14,6 @@ jobs:
 
     name: 'Merge pull requests'
 
-    if: github.event_name == 'gogogogog' # TODO tmp for test
-
     steps:
     - name: Find pull request
       uses: fp51/actions/find-pull-request@v1
