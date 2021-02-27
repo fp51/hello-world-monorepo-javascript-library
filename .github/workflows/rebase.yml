@@ -25,6 +25,11 @@ jobs:
 
         git status
 
+        mkdir -p /tmp/tmp-2561-myjefY7QWjIC
+        cd /tmp/tmp-2561-myjefY7QWjIC
+
+        git status
+
     - name: 'Rebase one pull request based on main with label'
       uses: fp51/actions/rebase-pull-requests@release-rebase-fix-git-module
       with:
