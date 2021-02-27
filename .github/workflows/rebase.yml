@@ -26,7 +26,7 @@ jobs:
         git status
 
     - name: 'Rebase one pull request based on main with label'
-      uses: fp51/actions/rebase-pull-requests@v1
+      uses: fp51/actions/rebase-pull-requests@release-rebase-fix-git-module
       with:
         # we use another token here
         # because an action in a workflow run can't trigger a new workflow run
