@@ -13,7 +13,7 @@
   "scripts": {
     "build": "rm -rf dist esm && rollup -c",
     "test:js": "jest --coverage",
-    "lint:js": "echo \"no lint\"",
+    "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx,.json,.d.ts --cache",
     "docs": "typedoc"
   },
   "homepage": "https://github.com/fp51/hello-world-monorepo-javascript-library#readme",
@@ -28,8 +28,11 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@fp51/eslint-config": "^1.0.1",
+    "@fp51/eslint-config-jest": "^1.0.0",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@types/jest": "^26.0.20",
+    "eslint": "^7.21.0",
     "jest": "^26.6.3",
     "rollup": "^2.39.0",
     "rollup-plugin-multi-input": "^1.2.0",
