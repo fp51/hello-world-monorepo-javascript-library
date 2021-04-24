@@ -27,7 +27,7 @@ jobs:
           const { data: labels } = await github.issues.listLabelsOnIssue({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            issue_number: context.payload.pull_request_target.number,
+            issue_number: context.payload.pull_request.number,
             per_page: 100,
           });
 
@@ -54,7 +54,7 @@ jobs:
           const { data: pullLabels } = await github.issues.listLabelsOnIssue({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            issue_number: context.payload.pull_request_target.number,
+            issue_number: context.payload.pull_request.number,
             per_page: 100,
           });
 

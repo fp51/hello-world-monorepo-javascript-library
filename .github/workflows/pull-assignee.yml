@@ -18,7 +18,7 @@ jobs:
           const { data: pull } = await github.pulls.get({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            pull_number: context.payload.pull_request_target.number,
+            pull_number: context.payload.pull_request.number,
           });
 
           if (pull.assignees.length > 0) {
