@@ -1,7 +1,7 @@
 name: Pull request assignee
 
 on:
-  pull_request:
+  pull_request_target:
     types: [assigned, unassigned, synchronize]
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
           const { data: pull } = await github.pulls.get({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            pull_number: context.payload.pull_request.number,
+            pull_number: context.payload.pull_request_target.number,
           });
 
           if (pull.assignees.length > 0) {

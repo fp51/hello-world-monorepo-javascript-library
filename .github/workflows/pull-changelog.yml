@@ -1,7 +1,7 @@
 name: Pull request changelog
 
 on:
-  pull_request:
+  pull_request_target:
     types: [labeled, unlabeled, synchronize]
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
           const { data: pullLabels } = await github.issues.listLabelsOnIssue({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            issue_number: context.payload.pull_request.number,
+            issue_number: context.payload.pull_request_target.number,
             per_page: 100,
           });
 
@@ -70,7 +70,7 @@ jobs:
           const { data: files } = await github.pulls.listFiles({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            pull_number: context.payload.pull_request.number,
+            pull_number: context.payload.pull_request_target.number,
             per_page: 100,
           });
 

@@ -1,7 +1,7 @@
 name: Pull request labels autocreation
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize]
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
           const { data: files } = await github.pulls.listFiles({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            pull_number: context.payload.pull_request.number,
+            pull_number: context.payload.pull_request_target.number,
             per_page: 100,
           });
 
@@ -54,6 +54,6 @@ jobs:
           await github.issues.addLabels({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            issue_number: context.payload.pull_request.number,
+            issue_number: context.payload.pull_request_target.number,
             labels,
           });
