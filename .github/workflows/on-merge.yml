@@ -213,9 +213,6 @@ jobs:
         NAME=$(cat package.json | jq -r '.name')
         echo "::set-output name=name::$NAME"
 
-        COMMIT_ID=$(git rev-parse HEAD)
-        echo "::set-output name=ref::$COMMIT_ID"
-
     - name: Extract release changelog
       id: extract-changelog
       if: steps.extract-labels.outputs.versionBump != 'beta'
