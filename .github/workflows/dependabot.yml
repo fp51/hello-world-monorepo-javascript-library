@@ -43,38 +43,40 @@ jobs:
       with:
         github-token: "${{ secrets.TOKEN_REPO_WRITE }}"
         script: |
-            const findPullRequestQuery = `
-              query findPullRequest($owner: String!, $repo: String!, $number: Int!) {
-                repository(owner: $owner, name: $repo) {
-                  pullRequest(number: $number) {
-                    id
-                  }
+          const findPullRequestQuery = `
+            query findPullRequest($owner: String!, $repo: String!, $number: Int!) {
+              repository(owner: $owner, name: $repo) {
+                pullRequest(number: $number) {
+                  id
                 }
               }
+            }
+          `
 
-            const result = await github.graphql(findPullRequestQuery, {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              number: context.payload.pull_request.number,
-            })
+          const result = await github.graphql(findPullRequestQuery, {
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            number: context.payload.pull_request.number,
+          })
 
-            const {
-              repository: {
-                pullRequest: {
-                  id: pullRequestId
+          const {
+            repository: {
+              pullRequest: {
+                id: pullRequestId
+              }
+            }
+          } = result
+
+          const query = `
+            mutation enableAutoMerge($id: String!) {
+              enablePullRequestAutoMerge(input: { pullRequestId: $id }) {
+                pullRequest {
+                  id
                 }
               }
-            } = result
+            }
+          `
 
-            const query = `
-              mutation enableAutoMerge($id: String!) {
-                enablePullRequestAutoMerge(input: { pullRequestId: $id }) {
-                  pullRequest {
-                    id
-                  }
-                }
-            }`;
-
-            await github.graphql(query, {
-              id: pullRequestId
-            })
+          await github.graphql(query, {
+            id: pullRequestId
+          })
