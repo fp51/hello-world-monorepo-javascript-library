@@ -111,6 +111,7 @@ jobs:
         PACKAGE: ${{ steps.packages.outputs.packages }}
       run: |
         echo $PACKAGE
+        cd $PACKAGE
 
         # compute canary versions
         NOW=$(date +%s%3N)
