@@ -21,7 +21,7 @@ jobs:
           await github.issues.addAssignees({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            issue_number: context.payload.pull_request_target.number,
+            issue_number: context.payload.pull_request.number,
             assignees: ['fp51-bot']
           });
 
@@ -33,7 +33,7 @@ jobs:
           github.pulls.createReview({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            pull_number: context.payload.pull_request_target.number,
+            pull_number: context.payload.pull_request.number,
             event: "APPROVE",
             body: '![approve gif](https://media.giphy.com/media/8RxCFgu88jUbe/giphy.gif)',
           });
